@@ -1,10 +1,17 @@
 ﻿using Ambev.DeveloperEvaluation.Common.Validation;
+using System.Collections.Generic;
+using Ambev.DeveloperEvaluation.Domain.Events;
 
 namespace Ambev.DeveloperEvaluation.Domain.Common;
 
 public class BaseEntity : IComparable<BaseEntity>
 {
     public Guid Id { get; set; }
+
+    private readonly List<IDomainEvent> _domainEvents = new();
+    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
+    public void ClearDomainEvents() => _domainEvents.Clear();
 
     public Task<IEnumerable<ValidationErrorDetail>> ValidateAsync()
     {
