@@ -70,6 +70,13 @@ public class Program
 
             app.MapControllers();
 
+            // Executa as migrations do banco de dados automaticamente ao iniciar
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<DefaultContext>();
+                db.Database.Migrate();
+            }
+
             app.Run();
         }
         catch (Exception ex)
