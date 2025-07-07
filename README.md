@@ -66,7 +66,3 @@ O projeto possui estrutura para testes unitários, funcionais e de integração,
 - [ ] Adicionar autenticação e autorização em cada endpoint
 - [ ] Criar testes de integração
 - [ ] Criar pipeline de CI/CD
-
-## Contribuição
-
-Sinta-se à vontade para abrir issues ou pull requests com melhorias, correções ou sugestões.
